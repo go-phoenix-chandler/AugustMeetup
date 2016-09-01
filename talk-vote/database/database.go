@@ -39,6 +39,14 @@ var talks = []models.Talk{
 	},
 }
 
+// DBDriver
+type DBDriver interface {
+	Build() error
+	Talk(int) (*models.Talk, error)
+	Talks() ([]models.Talk, error)
+	Vote(int) error
+}
+
 // Database holds the database connection
 type Database struct {
 	*bolt.DB
